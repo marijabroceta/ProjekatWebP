@@ -183,8 +183,9 @@ $(document).ready(function(){
 		});
 		
 		if(data.video.enableComments == false){
-			addComment.hide();
+			addComment.replaceWith('<h3 id="commDisabled">Comments are disabled for this video</h3>');
 			comments.hide();
+			$('.collapsible').hide();
 		}
 		
 		if(data.video.enableRating == false){
@@ -193,8 +194,9 @@ $(document).ready(function(){
 		}
 		
 		if(data.status == "visitor" || data.user.blocked == true){
-			addComment.hide();
-			subscribe.show();
+			addComment.replaceWith('<h3 id="commDisabled">You are not <a href="Login.html"> logged in</a> or you are blocked</h3>');
+			subscribe.hide();
+			$('.collapsible').hide();
 		}
 		
 		if(data.user != null){

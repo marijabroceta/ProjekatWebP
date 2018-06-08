@@ -1,7 +1,7 @@
 @import url("../css/navigation.css");
 
 .container-fluid {
-  margin:5% 7% 0 7%;
+  margin:5% 0 0 7%;
 }
 
 .container-fluid .slicica .caption h5 {
@@ -32,8 +32,4 @@
 
 .picture p {
   font-size: 12px;
-}
-
-.video{
-	height:320px;
 }

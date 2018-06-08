@@ -168,6 +168,11 @@ $(document).ready(function(){
 				});
 			}
 			
+			if(data.user.userName == data.owner.userName){
+				subscribe.hide();
+				unsubscribe.hide();
+			}
+			
 			if(data.user.userName != data.owner.userName){
 				subscribe.on('click',function(e){
 					var subUpdate = data.subsNumber

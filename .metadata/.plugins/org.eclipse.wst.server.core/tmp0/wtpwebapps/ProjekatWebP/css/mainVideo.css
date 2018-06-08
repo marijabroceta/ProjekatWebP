@@ -334,3 +334,12 @@ textarea {
   	float: left;
   	margin:10px;
 }
+
+#commDisabled{
+	color:white;
+	margin-left:150px;
+}
+
+#commDisabled a{
+	color:#caccce;
+}

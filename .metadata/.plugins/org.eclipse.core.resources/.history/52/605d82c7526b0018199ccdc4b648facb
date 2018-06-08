@@ -33,7 +33,3 @@
 .picture p {
   font-size: 12px;
 }
-
-.video{
-	height:320px;
-}

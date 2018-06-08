@@ -36,18 +36,6 @@ $(document).ready(function(){
 		console.log(passwordVal);
 		console.log(firstNameVal);
 		
-		/*$.ajax({
-			type:'POST',
-			url:'RegisterServlet',
-			data:data,
-			cache:false,
-			processData:false,
-			contentType:false,
-			success:function(data){
-				
-			}
-		});*/
-		
 		$.post('RegisterServlet',params,function(data){
 			if(data.status == "exist"){
 				message.text("User already exist");
