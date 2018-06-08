@@ -1,0 +1,35 @@
+@import url("../css/navigation.css");
+
+.container-fluid {
+  margin:5% 0 0 7%;
+}
+
+.container-fluid .slicica .caption h5 {
+  margin-left: 8%;
+  text-align: center;
+}
+
+.container-fluid .picture p img {
+  width: 100%;
+  height: 100%;
+  padding-right: 8px;
+
+}
+
+.container-fluid .picture {
+  float: left;
+}
+
+#displayCount {
+  color: #fff;
+}
+
+.container-fluid h3 {
+  text-decoration: underline;
+  
+  color: #fff;
+}
+
+.picture p {
+  font-size: 12px;
+}

@@ -1,0 +1,102 @@
+@import url(../css/navigation.css);
+
+.container-form{
+	border-radius: 5px;
+    background-color: #333;
+    padding: 20px;
+    width: 30%;
+    margin: 70px auto;
+    box-shadow: 0 0 10px;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+label{
+	color: white;
+	display: block;
+	font-size: 15px;
+}
+select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: none;
+}
+
+#submit{
+	font-size: 18px;
+	margin-top: 15px;
+	background: linear-gradient(#605f5f 5%, #827f7f 100%);
+	border: 1px solid #0F799E;
+	padding: 7px 35px;
+	color: white;
+	text-shadow: 0px 1px 0px #13506D;
+	font-weight: bold;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-left: 35%;
+}
+
+#submit:hover{
+	background: linear-gradient(#827f7f 5%, #605f5f 100%);
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #e00404;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

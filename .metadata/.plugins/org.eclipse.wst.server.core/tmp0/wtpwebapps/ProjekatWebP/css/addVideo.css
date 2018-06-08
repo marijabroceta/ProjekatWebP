@@ -1,0 +1,63 @@
+@import url(../css/navigation.css);
+
+.container{
+	border-radius: 5px;
+    background-color: #333;
+    padding: 20px;
+    width: 30%;
+    margin: 70px auto;
+    box-shadow: 0 0 10px;
+}
+
+h3{
+	color:white;
+	text-align: center;
+}
+
+p {
+	font-size:15px;
+	font-weight:bold;
+	text-align: center;
+}
+
+label{
+	color: white;
+	display: block;
+	font-size: 15px;
+}
+
+input[type=text]{
+	width: 100%;
+	 border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 12px;
+}
+select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: none;
+}
+
+#submit{
+	font-size: 18px;
+	margin-top: 15px;
+	background: linear-gradient(#605f5f 5%, #827f7f 100%);
+	border: 1px solid #0F799E;
+	padding: 7px 35px;
+	color: white;
+	text-shadow: 0px 1px 0px #13506D;
+	font-weight: bold;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-left: 35%;
+}
+
+#submit:hover{
+	background: linear-gradient(#827f7f 5%, #605f5f 100%);
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Video</title>
+
+	<script src="jquery-3.2.1.js"></script>
+  
+	<script src="js/mainVideo.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/mainVideo.css">
+  <link rel="icon" href="slike/favicon.ico" />
+</head>
+<body>
+	<div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li><a href="Index.html">Home</a></li>
+               
+                <li><a href="register.html">SignUp</a></li>
+                
+            </ul>      
+        </nav>
+        <nav class="navbar navbar-fixed-top topnav">
+            <div id="page-content-wrapper" >
+            <button type="button" class="hamburger is-closed nav navbar-nav navbar-left" data-toggle="offcanvas" >
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            </div>
+            <div id="search">
+                <a href="Index.html"><img src="images/logo.png"></a>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div id="signIn">
+                <ul class="nav navbar-nav navbar-right navIcon">
+                  <li><a href="Register.html" id="signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li><a href="Login.html" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav> 
+    </div>
+    <div class="col-lg-8">
+    
+      <div class="videoYouTube">
+        <div id="video">
+           <iframe width="768" height="480" src="https://www.youtube.com/embed/Q0CbN8sfihY" id="videoFrame"></iframe> 
+        </div>
+        <div class="afterVideo">
+        	<div class="row">
+        		
+        		<button id="deleteVideo">Delete video</button>
+        	</div>
+          <div class="row">
+            <div class="col-sm-8 title">
+              <h4 id="videoName"></h4>
+              <p id="videoViews"></p>
+            </div>
+            <div class="col-sm-4 likeDislike">
+              <div id="dislikeVid">
+                  <button id="dislikeVideoBtn"><img src="images/like.svg"></button>
+                  <h5 id="dislikeVideoNumber"></h5>
+              </div>
+              <div id="likeVid">
+                  <button id="likeVideoBtn"><img src="images/like.svg" ></button>
+                  <h5 id="likeVideoNumber"></h5>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="userImg">
+                <img src="" id="userImage">
+              </div>
+              <div class="info">
+                <p><a href="" id="userName"></a></p>
+                <p id="date"></p>
+                <p id="description"></p> 
+              </div>
+              
+                        
+              
+            </div>
+            <div class="col-sm-4">
+              <input type="button" id="subscribeBtn" value="Subscribe">
+              <input type="button" id="unsubscribeBtn" value="Unsubscribe">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="pic">
+                <h5>Comment</h5>
+                <img src="" id="userComImage">
+              </div>
+              <div class="col addComment">
+                <textarea rows="1" cols="90" name="comment" form="commentForm" placeholder="Napisite komentar" id="textArea"></textarea>
+                <form name="commentForm">
+                  <input type="submit" value="Komentarisi" id="komentarisi">&nbsp;&nbsp;&nbsp;
+                  <input type="button" value="Odustani" id="odustani">
+              </form>
+              </div>
+            </div>          
+          </div>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4 komentari">
+    	<div class="row">
+    		<div id="naslovKom">
+    			<h5 id="commTitle">Comments</h5>
+          		<button class="collapsible">Sort comments</button>
+          		<div class="content">
+          			<h5>Sort by:</h5>
+          			<select id="sortSelect" name="sort">
+          				<option value="numberOfLikes">Like</option>
+          				<option value="numberOfDislikes">Dislike</option>
+          				<option value="dateOfComment">Date</option>
+          			</select>
+          			<label class="sortRadioBtn">
+          				Ascending
+          				<input type="radio" id="sortAsc" value="ASC" checked="checked" name="radio">
+          				<span class="check"></span>
+          			</label>
+          			<label class="sortRadioBtn">
+          				Descending
+          				<input type="radio" id="sortDesc" value="DESC" name="radio">
+          				<span class="check"></span>
+          			</label>
+          			<input type="submit" value="Sort" id="sort">
+          		</div>
+    		</div>
+    	</div>
+    
+    <div class="row comments">
+    		
+    </div>
+    <div class="editComment">
+    	<textarea rows="1" cols="50" name="commEdit"  placeholder="Napisite komentar" id="textAreaEdit"></textarea>
+        <div class="buttons">
+        	<input type="button" value="Edit" id="editCommSubmit">
+        	<input type="button" value="Cancel" id="cancel">
+        </div>
+    </div>
+    </div>
+    <div class="overlay">
+    	<h1>Sorry,this content is not availible</h1>
+    </div>
+</body>
+<script type="text/javascript">
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+	coll[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.maxHeight) {
+			content.style.maxHeight = null;
+		} else {
+			content.style.maxHeight = content.scrollHeight + "px";
+		}
+	});
+}
+</script>
+</html>

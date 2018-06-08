@@ -1,0 +1,269 @@
+$(document).ready(function(){
+	var userName = window.location.search.slice(1).split('&')[0].split('=')[1];
+	var username = $('#username');
+	var subsNumber = $('#subscribersNum');
+	var image = $('#userImg');
+	var dateOfReg = $('#dateOfReg');
+	var blocked = $('#block');
+	var role = $('#role');
+	var description = $('#description');
+	var subscribe = $('#subscribe');
+	var unsubscribe = $('#unsubscribe');
+	var videos = $('#videos');
+	var subscribers = $('#subscribers');
+	var deleteAcc = $('#delete');
+	var asc = $('#sortAsc');
+	var desc = $('#sortDesc');
+	
+	
+	deleteAcc.hide();
+	unsubscribe.hide();
+	$('.overlay').hide();
+	
+	$.get('UserServlet',{'userName':userName},function(data){
+		username.text(data.owner.userName);
+		subsNumber.text("Subscribers: " + data.subsNumber);
+		var src = 'images/' + userName + '.jpg';
+		image.attr('src',src);
+		
+		dateOfReg.text("Date of registration: " + data.owner.dateOfRegistration);
+		description.text(data.owner.channelDescription);
+		role.text("Role: " + data.owner.role);
+		
+		if(data.owner.blocked == false){
+			blocked.text("Not blocked");
+		}else{
+			blocked.text("Blocked");
+		}
+		
+		console.log(data.videos);
+		for(it in data.videos){
+			
+			videos.append(
+				'<div class="column">' + 
+					'<div class="content">' +
+						'<div id="videoInfo">' + 
+							'<p id="videoImg"><img src="' +data.videos[it].videoPicture+ '"></p>'+
+						'</div>' +
+						'<div id="userInfo">' + 
+							'<h4 id="linkVideo"><a href="MainVideo.html?id=' + data.videos[it].id + '">' + data.videos[it].videoName + '</a></h4>' + 
+							'<p class="linkUser"><img src="images/' + data.videos[it].ownerOfVideo.userName + '.jpg">' + 
+							'<a href="UserChannel.html?userName=' + data.videos[it].ownerOfVideo.userName + '">' + data.videos[it].ownerOfVideo.userName + '</a></p>' + 
+							'<p class="date">Date: ' + data.videos[it].postDate + '</p>' + 
+							'<p class="rating">Views:' + data.videos[it].numberOfViews + '</p>' + 
+						'</div>' +
+					'</div>' + 
+				'</div>'
+			);
+		}
+		
+		for(i in data.subscribers){
+			subscribers.append(
+				'<div class="col-lg-2">' +
+					'<div class="subsInfo">' +
+						'<p>' +
+							'<img src="images/' + data.subscribers[i].userName + '.jpg">' +
+							'<a href="UserChannel.html?userName=' + data.subscribers[i].userName + '">' + data.subscribers[i].userName + '</a>' + 
+						'</p>' + 
+						'<p>Subscribers: ' + data.subscribers[i].subsNumber + '</p>' + 
+					'</div>' +
+				'</div>'
+			);
+		}
+		
+		if(data.user == null){
+			subscribe.on('click',function(e){
+				alert("You must be signed in first!");
+				e.preventDefault();
+				return false;
+			});
+		}
+		
+		if(data.user != null){
+			console.log(data.user);
+			$('#login').replaceWith('<a href="LogOutServlet"><span class="glyphicon glyphicon-log-out"></span> LogOut</a>')
+			$('#signUp').replaceWith('<a href="UserChannel.html?userName=' + data.user.userName + '"><span>' + data.user.userName + '</span></a>')
+			$('.sidebar-nav').append(
+						'<li><a href="AddVideo.html?userName=' + userName +'">Add video</a></li>'	
+				);
+			if(data.user.role == "ADMIN"){
+				$('.sidebar-nav').append(
+						'<li><a href="Admin.html">Admin page</a></li>'	
+				);
+			}
+		}
+		
+		if(data.owner.blocked == true){
+			$('.container').hide();
+			$('.overlay').show();
+		}
+		
+		if(data.owner.blocked == true){
+			if(data.user != null){
+				if(data.user.userName == data.owner.userName || data.user.role == "ADMIN"){
+					$('.container').show();
+					$('.overlay').hide();
+				}
+			}
+		}
+		
+		$('#sort').on('click',function(e){
+			var column = $('#sortSelect').val();
+			var ascDesc = asc.val();
+			if(desc.is(':checked')){
+				var ascDesc = desc.val();
+			}
+			console.log(column);
+			console.log(ascDesc);
+			console.log(userName);
+			$.post('MainVideoServlet',{'action':'sort','column':column,'ascDesc':ascDesc,'userName':userName},function(data){
+				if(data.status == "success"){
+					videos.empty();
+					for(it in data.videos){
+						videos.append(
+							'<div class="column">' + 
+								'<div class="content">' +
+									'<div id="videoInfo">' + 
+										'<p id="videoImg"><img src="' +data.videos[it].videoPicture+ '"></p>'+
+									'</div>' +
+									'<div id="userInfo">' + 
+										'<h4 id="linkVideo"><a href="MainVideo.html?id=' + data.videos[it].id + '">' + data.videos[it].videoName + '</a></h4>' + 
+										'<p class="linkUser"><img src="images/' + data.videos[it].ownerOfVideo.userName + '.jpg">' + 
+										'<a href="UserChannel.html?userName=' + data.videos[it].ownerOfVideo.userName + '">' + data.videos[it].ownerOfVideo.userName + '</a></p>' + 
+										'<p class="date">Date: ' + data.videos[it].postDate + '</p>' + 
+										'<p class="rating">Views:' + data.videos[it].numberOfViews + '</p>' + 
+									'</div>' +
+								'</div>' + 
+							'</div>'
+						);
+					}
+				}
+			});
+			e.preventDefault();
+			return false;
+		});
+		
+		if(data.user != null){
+			if(data.isSubscribed == "subscribe"){
+				unsubscribe.show();
+				subscribe.hide();
+			}
+			
+			if(data.user.userName == data.owner.userName || data.user.role == "ADMIN"){
+				$('.sidebar-nav').append(
+						'<li><a href="EditUser.html?userName=' + data.owner.userName + '">Edit account</a></li>'
+				);
+				
+				deleteAcc.show();
+				
+				deleteAcc.on('click',function(e){
+					var confirmation = confirm("Are you sure you want to delete account?");
+					if(confirmation){
+						$.post('UserServlet',{'userName':userName,'action':"delete"},function(data){
+							window.location.replace('LogOutServlet');
+						});
+					}
+					e.preventDefault();
+					return false;
+				});
+			}
+			
+			if(data.user.userName != data.owner.userName){
+				subscribe.on('click',function(e){
+					var subUpdate = data.subsNumber
+					$.post('SubscribersServlet',{'channel':data.owner.userName,'subscriber':data.user.userName},function(data){
+						console.log("Stigao odgovor")
+						if(data.status == "success"){
+							alert("You are subscribed successfully");
+							$(unsubscribe).css("width","120px");
+							unsubscribe.show();
+							subscribe.hide();
+							subsNumber.text("Subscribers: " + data.subsNum);
+							
+						}
+					});
+					e.preventDefault();
+					return false;
+				});
+				
+				unsubscribe.on('click',function(e){
+					$.get('SubscribersServlet',{'channel':data.owner.userName,'subscriber':data.user.userName},function(data){
+						console.log("Stigao odgovor");
+						if(data.status == "success"){
+							alert("You are unsubscribed successfully!");
+							subscribe.show();
+							unsubscribed.hide();
+							subsNumber.text("Subscribers: " + data.subsNum);
+						}
+					});
+					e.preventDefault();
+					return false;
+				});
+			}
+		}
+		
+	});
+	
+	$("#homeTab").hide();
+    $("#channelsTab").hide();
+    $("#aboutTab").hide();
+
+    
+
+    $("#homeLink").click(function(e){
+      e.preventDefault();
+
+      $("#homeTab").show();
+      $("#channelsTab").hide();
+      $("#aboutTab").hide();
+      
+    });
+
+
+    
+    $("#channelsLink").click(function(e){
+      e.preventDefault();
+
+      $("#channelsTab").show();
+      $("#homeTab").hide();
+      $("#aboutTab").hide();
+      
+    });
+    
+    $("#aboutLink").click(function(e){
+      e.preventDefault();
+
+      $("#aboutTab").show();
+      $("#homeTab").hide();
+      $("#channelsTab").hide();
+      
+    });
+    
+    var trigger = $('.hamburger'),
+    
+	isClosed = false;
+
+	trigger.click(function () {
+		hamburger_cross();      
+	});
+
+	function hamburger_cross() {
+
+		if (isClosed == true) {          
+      
+			trigger.removeClass('is-open');
+			trigger.addClass('is-closed');
+			isClosed = false;
+		} else {   
+      
+			trigger.removeClass('is-closed');
+			trigger.addClass('is-open');
+			isClosed = true;
+		}
+	}
+
+	$('[data-toggle="offcanvas"]').click(function () {
+		$('#wrapper').toggleClass('toggled');
+	});
+
+});

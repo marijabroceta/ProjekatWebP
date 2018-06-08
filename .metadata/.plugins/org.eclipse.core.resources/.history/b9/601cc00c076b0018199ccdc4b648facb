@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="jquery-3.2.1.js"></script>
+<script src="js/addVideo.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/addVideo.css">
+<title>Add video</title>
+</head>
+<body>
+	<div id="wrapper">
+		<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li><a href="Index.html">Home</a></li>
+                
+                <li><a href="register.html">SignUp</a></li>
+                
+            </ul>      
+        </nav>
+        <div class="topNavigation">
+            <nav class="navbar navbar-fixed-top topnav">
+            <div id="page-content-wrapper" >
+            <button type="button" class="hamburger is-closed nav navbar-nav navbar-left" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            </div>
+            <a href="Index.html"><img src="images/logo.png"></a>
+            <div id="search">              
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="searchText"  placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default" >
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div id="signIn">
+                <ul class="nav navbar-nav navbar-right navIcon">
+                    <li><a href="register.html" id="signUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="Login.html" id="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </nav> 
+    </div>
+    </div>
+    <div class="container">
+    	<h3>Add video</h3>
+    	<p>Fill in this form to add video</p>
+    	<p>Fields with * are required</p>
+    	<form>
+    		<label for="url">Video URL *</label>
+    		<input type="text" id="url" name="url" placeholder="URL Example: https://www.youtube.com/watch?v=D86RtevtfrA" required="required">
+    		<label for="name">Video name *</label>	
+    		<input type="text" id="name" name="name" placeholder="Insert video name..." required="required">
+    		<label for="visibility">Visibility *</label>
+    		<select id="visibility" name="visibility">
+    			<option value="public">Public</option>
+    			<option value="private">Private</option>
+    			<option value="unlisted">Unlisted</option>
+    		</select>
+    		<label for="enableComments">Enable comments *</label>
+    		<select id="enableComments" name="enableComments">
+    			<option value="true">Enable</option>
+    			<option value="false">Disable</option>
+    		</select>
+    		<label for="enableRating">Enable rating *</label>
+    		<select id="enableRating" name="enableRating">
+    			<option value="true">Enable rating</option>
+    			<option value="false">Disable rating</option> 
+    		</select>
+    		<label for="description">Description</label>
+    		<textarea id="description" name="description" placeholder="Description..." maxlength="100"></textarea>
+    		<p id="message"></p>
+    		<input type="submit" value="Submit" id="submit">
+    	</form>
+    </div>
+</body>
+</html>
