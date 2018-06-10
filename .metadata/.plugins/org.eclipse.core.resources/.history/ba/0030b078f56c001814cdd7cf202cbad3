@@ -319,8 +319,8 @@ $(document).ready(function(){
 				});
 				dislikeVideo.on('click',function(e){
 					$.post('LikeDislikeVideoServlet',{'id':data.video.id},function(data){
-						numberOfDislikes.text(data.dislikeNum);
-						numberOfLikes.text(data.likeNum);
+						numberOfDislikes.text(data.dislikeNumVideo);
+						numberOfLikes.text(data.likeNumVideo);
 					});
 					e.preventDefault();
 					return false;

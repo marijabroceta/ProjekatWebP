@@ -320,7 +320,7 @@ textarea {
 .editComment{
 	width:50%;
 	height:auto;
-	position:relative;
+	position:fixed;
 	
 	display:none;
 }

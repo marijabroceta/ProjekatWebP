@@ -15,7 +15,7 @@ $(document).ready(function(){
 	var submitComm = $('#komentarisi');
 	var cancelComm = $('#odustani');
 	var contentComm = $('#textArea');
-	var addComment = $('.addComm');
+	var addComment = $('.addComment');
 	var likeVideo = $('#likeVideoBtn');
 	var dislikeVideo = $('#dislikeVideoBtn');
 	var userPhoto = $('#userImage');
@@ -254,7 +254,7 @@ $(document).ready(function(){
 				});
 			}
 			if(data.user.blocked == false){
-				$('input[type=button]#deleteComment').on('click',function(e){
+				$('#deleteComm').on('click',function(e){
 					var id = $(this).attr('name');
 					console.log(id);
 					var confirmation = confirm("Are you sure?");
@@ -271,7 +271,7 @@ $(document).ready(function(){
 					return false;
 				});
 				
-				$('input[type=button]#editComm').on('click',function(e){
+				$('#editComm').on('click',function(e){
 					var id = $(this).attr('name');
 					console.log(id);
 					var choice = '#' + id + ' #commContent';
@@ -319,38 +319,15 @@ $(document).ready(function(){
 				});
 				dislikeVideo.on('click',function(e){
 					$.post('LikeDislikeVideoServlet',{'id':data.video.id},function(data){
-						numberOfDislikes.text(data.dislikeNum);
-						numberOfLikes.text(data.likeNum);
+						numberOfDislikes.text(data.dislikeNumVideo);
+						numberOflikes.text(data.likeNumVideo);
 					});
 					e.preventDefault();
 					return false;
 				});
 				
 				
-				$('button#commLikeBtn').on('click',function(e){
-					var id = $(this).val();
-					$.get('LikeDislikeCommentServlet',{'id':id},function(data){
-						var getLike = "#commLikeNum." + id;
-						var getDislike = "#commDislikeNum." + id;
-						console.log(getLike);
-						$(getLike).text(data.likeNum);
-						$(getDislike).text(data.dislikeNum);
-					});
-					e.preventDefault();
-					return false;
-				});
-				
-				$('button#commDislikeBtn').on('click',function(e){
-					var id = $(this).val();
-					$.post('LikeDislikeCommentServlet',{'id':id},function(data){
-						var getLike = "#commLikeNum." + id;
-						var getDislike = "#commDislikeNum." + id;
-						$(getDislike).text(data.dislikeNum);
-						$(getLike).text(data.likeNum);
-					});
-				});
-				
-				/*$('button').on('click',function(e){
+				$('button').on('click',function(e){
 					var name = $(this).attr("name");
 					var id = $(this).val();
 					console.log(id);
@@ -375,7 +352,7 @@ $(document).ready(function(){
 						e.preventDefault();
 						return false;
 					}
-				});*/
+				});
 				if(data.isSubscribed == "subscribe"){
 					$(unsubscribe).css("width","120px");
 					unsubscribe.show();
