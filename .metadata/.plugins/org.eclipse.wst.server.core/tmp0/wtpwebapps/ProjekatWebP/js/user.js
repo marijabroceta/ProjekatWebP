@@ -98,6 +98,7 @@ $(document).ready(function(){
 			$('.overlay').show();
 		}
 		
+		
 		if(data.owner.blocked == true){
 			if(data.user != null){
 				if(data.user.userName == data.owner.userName || data.user.role == "ADMIN"){

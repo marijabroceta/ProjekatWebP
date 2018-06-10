@@ -8,8 +8,8 @@
 .collapsible {
      background:red;
     color: white;
-      width:200px;
-    height:60px;
+      width:400px;
+    height:50px;
     font-size:20px;
 }
 
@@ -24,6 +24,10 @@
     transition: max-height 0.2s ease-out;
     width: 80%;
     
+}
+
+h2{
+	color:white;
 }
 
 .sortRadioButton{
@@ -46,10 +50,12 @@ select{
   	margin-left: 5px;
   	margin-bottom: 5px;
   	text-transform: uppercase;
-  	font-size: 12px;
+  	font-size: 14px;
   	background: transparent;
   	color: #fff;
   	display: inline-block;
+  	width:100px;
+  	height:40px;
 }
 
 .user{
@@ -58,6 +64,7 @@ select{
 	margin-left: 10px;
 	box-shadow: 5px 5px 5px;
 	margin-top:20px;
+	height:280px;
 }
 
 .user p{

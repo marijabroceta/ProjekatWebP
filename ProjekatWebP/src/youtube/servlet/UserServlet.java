@@ -26,7 +26,7 @@ public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//try {
+		try {
 			
 			HttpSession session = request.getSession();
 			User loggedInUser = (User) session.getAttribute("loggedInUser");
@@ -74,9 +74,9 @@ public class UserServlet extends HttpServlet {
 			String jsonData = mapper.writeValueAsString(data);
 			response.setContentType("application/json");
 			response.getWriter().write(jsonData);
-			/*}catch (Exception e) {
-				System.out.println("Greska");
-			}*/
+			}catch (Exception e) {
+				System.out.println(e);
+			}
 	}
 
 	

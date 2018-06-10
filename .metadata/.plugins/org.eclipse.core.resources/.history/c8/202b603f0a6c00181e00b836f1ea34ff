@@ -1,0 +1,93 @@
+@import url(../css/navigation.css);
+
+.container{
+	margin-top:60px;
+	
+}
+
+.collapsible {
+     background:red;
+    color: white;
+      width:200px;
+    height:60px;
+    font-size:20px;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    width: 80%;
+    
+}
+
+.sortRadioButton{
+	color:#fff;
+}
+
+
+select{
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: none;
+}
+#sort{
+	border-radius: 5px;
+  	margin-left: 5px;
+  	margin-bottom: 5px;
+  	text-transform: uppercase;
+  	font-size: 12px;
+  	background: transparent;
+  	color: #fff;
+  	display: inline-block;
+}
+
+.user{
+	border-radius: 7px;
+	border:1px solid white;
+	margin-left: 10px;
+	box-shadow: 5px 5px 5px;
+	margin-top:20px;
+	height:280px;
+}
+
+.user p{
+	text-align: center;
+}
+
+#username{
+	font-size:18px;
+}
+
+#userImg {
+	margin-left: 60px;
+	margin-top: 10px;
+	margin-right: 60px;
+}
+
+img {
+	width:50px;
+	height:50px:
+}
+
+#delete{
+	border-radius: 5px;
+	background: red;
+	text-transform: uppercase;
+	color: #fff;
+	
+	border-width: 1px;
+	font-size: 12px;
+}
+
+

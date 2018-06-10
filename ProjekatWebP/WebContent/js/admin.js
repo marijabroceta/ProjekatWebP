@@ -27,7 +27,7 @@ $(document).ready(function(){
 			);
 		}
 		
-		$('button').on('click',function(event){
+		$('button#delete').on('click',function(event){
 			var userName = $(this).val();
 			console.log(userName);
 			var confirmation = confirm("Are you sure?");
@@ -99,5 +99,34 @@ $(document).ready(function(){
 		event.preventDefault();
 		return false;
 	});
+	
+	   var trigger = $('.hamburger'),
+	    
+		isClosed = false;
+
+		trigger.click(function () {
+			hamburger_cross();      
+		});
+
+		function hamburger_cross() {
+
+			if (isClosed == true) {          
+	      
+				trigger.removeClass('is-open');
+				trigger.addClass('is-closed');
+				isClosed = false;
+			} else {   
+	      
+				trigger.removeClass('is-closed');
+				trigger.addClass('is-open');
+				isClosed = true;
+			}
+		}
+
+		$('[data-toggle="offcanvas"]').click(function () {
+			$('#wrapper').toggleClass('toggled');
+		});
 });
+
+
 

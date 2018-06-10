@@ -20,6 +20,7 @@ INSERT INTO users(userName,userPassword,firstName,lastName,email,role,dateOfRegi
 INSERT INTO users(userName,userPassword,firstName,lastName,email,role,dateOfRegistration) VALUES ('zivko','zivko123','Zivko','Zivkovic','zivko@gmail.com','USER','2017-12-6');
 INSERT INTO users(userName,userPassword,firstName,lastName,email,role,dateOfRegistration) VALUES ('nikola','nikola123','Nikola','Nikolic','nikola@gmail.com','USER','2017-10-8');
 INSERT INTO users(userName,userPassword,firstName,lastName,email,role,dateOfRegistration) VALUES ('marko','marko123','Marko','Markovic','marko@gmail.com','ADMIN','2017-11-3');
+INSERT INTO users(userName,userPassword,firstName,lastName,email,role,dateOfRegistration) VALUES ('pera','pera123','Petar','Petrovic','pera@gmail.com','USER','2018-01-12');
 
 CREATE TABLE subscribe ( 
 	mainUser VARCHAR(15),
@@ -98,6 +99,25 @@ INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,n
 VALUES ('Fantastic movie','2017-11-15','janko',7,0,0);
 INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
 VALUES ('The best movie I ever seen','2017-12-24','zivko',7,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('Awesome movie','2018-01-15','nikola',1,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('Great actors','2018-01-28','zivko',1,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('I enjoyed watching a movie','2018-02-26','pera',1,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('Great movie','2018-02-27','zivko',2,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('Love this movie','2018-01-26','pera',2,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('I enjoyed watching a movie','2018-02-13','nikola',2,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('Awesome movie','2018-02-15','pera',3,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('Great actors','2018-01-16','nikola',3,0,0);
+INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
+VALUES ('I enjoyed watching a movie','2018-03-06','zivko',3,0,0);
+
 
 CREATE TABLE likeDislike (
 	id BIGINT AUTO_INCREMENT,

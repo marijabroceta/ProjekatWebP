@@ -118,9 +118,9 @@ $(document).ready(function(){
 		if(data.video.blocked == true || data.video.ownerOfVideo.blocked == true){
 			if(data.user != null){
 				if(data.user.userName == data.video.ownerOfVideo.userName || data.user.role == "ADMIN"){
-					$('.videoYouTube').hide();
-					$('.komentari').hide();
-					$('.overlay').fadeIn();
+					$('.videoYouTube').show();
+					$('.komentari').show();
+					$('.overlay').hide();
 					video.attr("src",data.video.videoUrl + "?rel=0&autoplay=1");
 				}
 			}
@@ -196,7 +196,14 @@ $(document).ready(function(){
 		if(data.status == "visitor" || data.user.blocked == true){
 			addComment.replaceWith('<h3 id="commDisabled">You are not <a href="Login.html"> logged in</a> or you are blocked</h3>');
 			subscribe.hide();
-			$('.collapsible').hide();
+			
+		}
+		
+		if(data.video.visibility == "PRIVATE"){
+			$('.videoYouTube').hide();
+			$('.komentari').hide();
+			$('.overlay').fadeIn();
+			video.attr("src","");
 		}
 		
 		if(data.user != null){
