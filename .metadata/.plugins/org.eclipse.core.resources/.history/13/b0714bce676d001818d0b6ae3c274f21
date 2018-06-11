@@ -117,12 +117,6 @@ INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,n
 VALUES ('Great actors','2018-01-16','nikola',3,0,0);
 INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
 VALUES ('I enjoyed watching a movie','2018-03-06','zivko',3,0,0);
-INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
-VALUES ('Awesome movie','2018-03-16','janko',6,0,0);
-INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
-VALUES ('Love this movie','2018-03-25','zivko',6,0,0);
-INSERT INTO comments(content,dateOfComment,ownerUserName,videoId,numberOfLikes,numberOfDislikes)
-VALUES ('I enjoyed watching a movie','2018-03-19','pera',6,0,0);
 
 
 CREATE TABLE likeDislike (
