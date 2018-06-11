@@ -199,7 +199,18 @@ $(document).ready(function(){
 			
 		}
 		
-		if(data.user.userName != data.video.ownerOfVideo.userName){
+		if(data.user != null){
+			if(data.user.userName != data.video.ownerOfVideo.userName){
+				if(data.video.visibility == "PRIVATE"){
+					$('.videoYouTube').hide();
+					$('.komentari').hide();
+					$('.overlay').fadeIn();
+					video.attr("src","");
+				}
+			}
+		}
+		
+		if(data.user == null){
 			if(data.video.visibility == "PRIVATE"){
 				$('.videoYouTube').hide();
 				$('.komentari').hide();
@@ -350,32 +361,6 @@ $(document).ready(function(){
 					});
 				});
 				
-				/*$('button').on('click',function(e){
-					var name = $(this).attr("name");
-					var id = $(this).val();
-					console.log(id);
-					
-					if(name == "like"){
-						$.get('LikeDislikeCommentServlet',{'id':id},function(data){
-							var getLike = "#commLikeNum." + id;
-							var getDislike = "#commDislikeNum." + id;
-							console.log(getLike);
-							$(getLike).text(data.likeNum);
-							$(getDislike).text(data.dislikeNum);
-						});
-						e.preventDefault();
-						return false;
-					}else{
-						$.post('LikeDislikeCommentServlet',{'id':id},function(data){
-							var getLike = "#commLikeNum." + id;
-							var getDislike = "#commDislikeNum." + id;
-							$(getDislike).text(data.dislikeNum);
-							$(getLike).text(data.likeNum);
-						});
-						e.preventDefault();
-						return false;
-					}
-				});*/
 				if(data.isSubscribed == "subscribe"){
 					$(unsubscribe).css("width","120px");
 					unsubscribe.show();

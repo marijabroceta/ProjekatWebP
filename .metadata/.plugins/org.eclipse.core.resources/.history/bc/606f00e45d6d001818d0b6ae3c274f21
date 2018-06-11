@@ -67,6 +67,6 @@ input[type=text], input[type=password]{
 	background: linear-gradient(#827f7f 5%, #605f5f 100%);
 }
 
-input[type=file]{
+input#photo{
 	color:white;
 }
